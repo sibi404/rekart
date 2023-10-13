@@ -9,4 +9,4 @@ def index(request):
     request.session['sample'] = ['sample data']
     request.session['sample'].insert(0,'zero data')
     print(vars(request.session))
-    return HttpResponse("Hello")
+    return render(request,'index.html')
