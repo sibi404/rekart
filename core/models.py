@@ -36,20 +36,20 @@ class PlasticWaste(models.Model):
           return self.name
 
 
-# class Products(models.Model):
-#       class CategoryChoice(models.TextChoices):
-#             FURNITURE = 'Furniture'
-#             HOME_ACCESSORIES = 'Home accessories'
-#             STATIONEY = 'Stationery'
-#             BAGS = 'Bags'
+class Products(models.Model):
+      class CategoryChoice(models.TextChoices):
+            FURNITURE = 'Furniture'
+            HOME_ACCESSORIES = 'Home accessories'
+            STATIONEY = 'Stationery'
+            BAGS = 'Bags'
 
-#       name = models.CharField(max_length=100)
-#       description = models.TextField()
-#       stock = models.PositiveIntegerField()
-#       price = models.DecimalField(max_digits=10,decimal_places=2)
-#       image = models.ImageField(upload_to='product_image',blank=True,null=True)
-#       seller = models.ForeignKey(User,related_name='products',on_delete=models.CASCADE,null=True)
-#       category = models.CharField(max_length=20,choices=CategoryChoice.choices,default='')
+      name = models.CharField(max_length=100)
+      description = models.TextField()
+      stock = models.PositiveIntegerField()
+      price = models.DecimalField(max_digits=10,decimal_places=2)
+      image = models.ImageField(upload_to='product_image',blank=True,null=True)
+      seller = models.ForeignKey(User,related_name='products',on_delete=models.CASCADE,null=True)
+      category = models.ForeignKey(ProductCategory,on_delete=models.CASCADE,null=True)
 
-#       def __str__(self):
-#             return self.name
+      def __str__(self):
+            return self.name

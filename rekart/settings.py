@@ -84,7 +84,7 @@ WSGI_APPLICATION = 'rekart.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'rekart_db',
+        'NAME': 'rekart',
         'USER': 'root',
         'PASSWORD': config('PASSWORD'),
         'HOST': 'localhost',
