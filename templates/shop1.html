@@ -1,0 +1,137 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+{% block content %}
+<main class="grid grid-cols-4 bg-gray-100">
+    <div class="py-9 px-6">   <!-- side-panel -->
+        <header>
+            <form action="" method="get" class="f">
+                <input class="border-2 border-gray-400 p-3 rounded-md" type="text" name="query" id="" placeholder="Search here">
+                <button class="block mt-4 rounded-md text-white font-bold py-3 px-6 bg-primary">Search</button>
+            </form>
+        </header>
+
+        <hr class="my-6 border-gray-300">
+
+        <h6 class="font-bold">Categories</h6>
+        <ul class="mt-4">
+            <li class="p-2 bg-gray-300 rounded-md">
+                <a href="#">Plastic</a>
+            </li>
+            <li class="p-2">
+                <a href="#">Recycled product</a>
+            </li>
+            <li class="p-2">
+                <a href="#">PVC</a>
+            </li>
+        </ul>
+
+        <hr class="my-6 border-gray-300">
+
+        <footer>
+            <h6 class="font-bold">Clear filter</h6>
+            <button class="py-2 px-4 rounded-md mt-4 bg-red-500 text-white font-bold">Clear</button>
+        </footer>
+    </div>
+
+    
+
+    <div class="col-span-3 pr-20 pl-10 py-10">   <!-- content -->
+
+        <h2 class="text-center text-3xl font-bold">
+            <span class="text-primary">Explore</span>
+            <span class="black-text">Items</span>
+        </h2>
+
+        <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"> <!-- card wrapper -->
+
+            <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
+                <img src="img/8e977e1e73c7.jpeg" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+                <div class="m-4">
+                    <span class="font-bold text-lg black-text">PVC Powder</span>
+                    <span class="block text-secondary font-bold">100/kg</span>
+                </div>
+                <div class="mx-4 mb-4 flex justify-start gap-1">
+                    <svg class="w-4 black-text" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>    
+                    <span class="black-text">Poland</span>
+                </div>
+            </div>
+
+
+            <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
+                <img src="img/recycled_chair.png" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+                <div class="m-4">
+                    <span class="font-bold text-lg black-text">PVC Powder</span>
+                    <span class="block text-secondary font-bold">100/kg</span>
+                </div>
+                <div class="mx-4 mb-4 flex justify-start gap-1">
+                    <svg class="w-4 black-text" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>    
+                    <span class="black-text">Poland</span>
+                </div>
+            </div>
+
+
+            <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
+                <img src="img/8e977e1e73c7.jpeg" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+                <div class="m-4">
+                    <span class="font-bold text-lg black-text">PVC Powder</span>
+                    <span class="block text-secondary font-bold">100/kg</span>
+                </div>
+                <div class="mx-4 mb-4 flex justify-start gap-1">
+                    <svg class="w-4 black-text" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>    
+                    <span class="black-text">Poland</span>
+                </div>
+            </div>
+
+
+            <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
+                <img src="img/bottle.jpeg" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+                <div class="m-4">
+                    <span class="font-bold text-lg black-text">PVC Powder</span>
+                    <span class="block text-secondary font-bold">100/kg</span>
+                </div>
+                <div class="mx-4 mb-4 flex justify-start items-center gap-1">
+                    <svg class="w-4 black-text" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                    </svg>    
+                    <span class="black-text">Poland</span>
+                </div>
+            </div>
+
+            
+
+            <div class="bg-white rounded-md overflow-hidden"> <!-- card -->
+                <img src="img/8e977e1e73c7.jpeg" class="w-full h-52 sm:h-64 " alt="pvc powder">
+                <div class="m-4">
+                    <span class="font-bold text-xl">PVC Powder</span>
+                    <span class="block text-lg">100/kg</span>
+                </div>
+                <div class="m-4 mb-4">
+                    <span class="text-">Poland</span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-md overflow-hidden shadow-lg"> <!-- card -->
+                <img src="img/8e977e1e73c7.jpeg" class="w-full h-52 sm:h-64 " alt="pvc powder">
+                <div class="m-4">
+                    <span class="font-bold text-xl">PVC Powder</span>
+                    <span class="block text-lg">100/kg</span>
+                </div>
+                <div class="m-4">
+                    <span class="text-">Poland</span>
+                </div>
+            </div>
+        </div> <!-- card wrapper end -->
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,81 @@
+{% load static %}
+{% load static tailwind_tags %}
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rekart</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    {% tailwind_css %}
+</head>
+<body class="font-body">
+    
+    <div>   <!-- content-wrapper -->
+        <header>
+            <nav class="flex justify-between items-center p-5 border-b-2 border-gray-200">
+                <div>
+                    <h1>
+                        <a href="/" class="font-bold text-primary text-2xl uppercase">Rekart</a>
+                    </h1>
+                </div>
+
+                <div class="hidden md:block">
+                    <ul class="flex gap-5 font-semibold black-text">
+                        <li>
+                            <a href="/" class="hover:font-bold">Home</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'shop' %}?data=hello" class="hover:font-bold">Shop</a>
+                        </li>
+                        <li>
+                            <a href="#" class="hover:font-bold upp">Dashboard</a>
+                        </li>
+                    </ul>
+                </div>
+                
+                <ul class="hidden md:flex gap-2">
+                    <li>
+                        <a href="#" class="btn text-xs btn-color hover-effect">Sign up</a>
+                    </li>
+                    <li>
+                        <a href="#" class="btn text-xs btn-color hover-effect">Login</a>
+                    </li>
+                </ul>
+
+                <div class="px-4 cursor-pointer md:hidden" id="burger">
+                    <svg class="w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+                        <path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
+                    </svg>  
+                </div>
+
+            </nav>
+
+            <ul class="border-t-2 border-gray-300 text-lg text-center font-semibold black-text hidden md:hidden" id="phone-menu">
+                <li class="py-4">
+                    <a href="#" class="hover:font-bold">Login</a>
+                </li>
+                <li class="py-4">
+                    <a href="#" class="hover:font-bold">Sign up</a>
+                </li>
+                <li class="py-4">
+                    <a href="/" class="hover:font-bold">Home</a>
+                </li>
+                <li class="py-4">
+                    <a href="shop.html" class="hover:font-bold">Shop</a>
+                </li>
+                <li class="py-4">
+                    <a href="#" class="hover:font-bold upp">Dashboard</a>
+                </li>
+            </ul>
+        </header>
+        {% block content %}
+
+        {% endblock %}
+    </div>
+    <footer class="h-32 bg-gray-900">
+            
+    </footer>
+    <script src="{% static 'script/script.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load static tailwind_tags %}
+{% block content %}
+<div class="p-16 bg-gradient-to-b from-primary from-43% to-secondary to-100%  text-white flex flex-wrap justify-around items-center">
+    <div>
+        <h1 class="text-5xl font-bold">Welcome to Rekart</h1>
+        <p class="text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+        <a href="#content">Let's explore</a>
+    </div>
+        
+    <div>
+        <img class="animate-digonal" src="{% static 'img/3d-casual-life-ecology-bag.png' %}" alt="">
+    </div>
+</div>
+
+<main class="bg-gray-100 px-16 md:px-44 xl:px-80" id="content">
+    <h2 class="text-center text-4xl font-extrabold pt-12 black-text">
+        <span class="text-primary">Our</span>
+        Products
+    </h2>
+    <h3 class="font-semibold text-2xl black-text  pb-2 pt-12 border-b-2 border-gray-200 =">Recycled products</h3>
+
+    <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"> <!-- card wrapper -->
+
+        <!-- card -->
+        {% for product in products %}
+        <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> 
+            <img src="{{ product.image.url }}" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+            <div class="m-4">
+                <span class="font-bold text-lg black-text">{{product.name}}</span>
+                <span class="block text-secondary font-bold">&#8377 {{product.price}}</span>
+            </div>
+            <div class="mx-4 mb-4">
+                <p>seller : {{product.seller}}</p>
+            </div>
+        </div>
+        {% endfor %}
+    </div> <!-- card wrapper end -->
+
+    <div class="py-10">
+        <h3 class="text-bold text-xl font-bold black-text ">Top Categories</h3>
+    </div>
+
+    <div>
+        <ul class="flex flex-wrap  gap-5 lg:gap-6">
+            <li>
+                <a class="btn btn-color text-xs hover-effect" href="#">Furniture</a>
+            </li>
+            <li>
+                <a class="btn btn-color text-xs hover-effect" href="#">Home accessories</a>
+            </li>
+            <li>
+                <a class="btn btn-color text-xs hover-effect" href="#">Stationery</a>
+            </li>
+            <li>
+                <a class="btn btn-color text-xs hover-effect" href="#">Bags</a>
+            </li>
+        </ul>
+    </div>
+
+
+    <div class="flex justify-center mt-14">
+        <div class="btn black-text bg-gray-200 border-gray-300 hover:shadow-inner transform hover:scale-105 hover:opacity-50 transition ease-out duration-300">Load more</div>
+    </div>
+
+
+    <h3 class="font-semibold text-2xl black-text  pb-2 pt-12 border-b-2 border-gray-200">Plastic</h3>
+
+    <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"> <!-- card wrapper 2 -->
+        <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
+            <img src="img/8e977e1e73c7.jpeg" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+            <div class="m-4">
+                <span class="font-bold text-lg black-text">PVC Powder</span>
+                <span class="block text-secondary font-bold">100/kg</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
+            <img src="img/PVC_powder.jpeg" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+            <div class="m-4">
+                <span class="font-bold text-lg black-text">PVC Powder</span>
+                <span class="block text-secondary font-bold">100/kg</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
+            <img src="img/8e977e1e73c7.jpeg" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+            <div class="m-4">
+                <span class="font-bold text-lg black-text">PVC Powder</span>
+                <span class="block text-secondary font-bold">100/kg</span>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
+            <img src="img/8e977e1e73c7.jpeg" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
+            <div class="m-4">
+                <span class="font-bold text-lg black-text">PVC Powder</span>
+                <span class="block text-secondary font-bold">100/kg</span>
+            </div>
+        </div>
+
+    </div> <!-- card wrapper-2 end -->
+
+    <div class="py-10">
+        <h3 class="text-bold text-xl font-bold black-text ">Top Categories</h3>
+    </div>
+
+    <div class="pb-10">
+        <ul class="flex flex-wrap  gap-5 lg:gap-6">
+            {% for x in categories %}
+            <li>
+                <a class="btn btn-color text-xs hover-effect" href="#">{{x}}</a>
+            </li>
+            {% endfor %}
+            <!-- <li>
+                <a class="btn btn-color text-xs hover-effect" href="#">HDPE</a>
+            </li>
+            <li>
+                <a class="btn btn-color text-xs hover-effect" href="#">PVC</a>
+            </li>
+            <li>
+                <a class="btn btn-color text-xs hover-effect" href="#">LDPE</a>
+            </li> -->
+        </ul>
+    </div>
+
+    <div class="flex justify-center py-10">
+        <div class="btn black-text bg-gray-200 border-gray-300 hover:shadow-inner transform hover:scale-105 hover:opacity-50 transition ease-out duration-300">Load more</div>
+    </div>
+
+</main>
+{% endblock %}
