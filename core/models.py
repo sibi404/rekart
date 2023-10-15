@@ -31,6 +31,7 @@ class PlasticWaste(models.Model):
     price = models.DecimalField(max_digits=10,decimal_places=2)
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='plastic_image',blank=True,null=True)
+    seller = models.ForeignKey(User,related_name='plastic_waste',on_delete=models.CASCADE,null=True)
 
     def __str__(self):
           return self.name
