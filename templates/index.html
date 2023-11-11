@@ -48,7 +48,7 @@
         <ul class="flex flex-wrap  gap-5 lg:gap-6">
             {% for category in product_cats %}
             <li>
-                <a class="btn btn-color text-xs hover-effect" href="{% url 'shop'%}?category={{category}}">{{category}}</a>
+                <a class="btn btn-color text-xs hover-effect" href="{% url 'shop:shop'%}?category={{category}}">{{category}}</a>
             </li>
             {% endfor %}
         </ul>
@@ -56,7 +56,7 @@
 
 
     <div class="flex justify-center mt-14">
-        <div class="btn black-text bg-gray-200 border-gray-300 hover:shadow-inner transform hover:scale-105 hover:opacity-50 transition ease-out duration-300">Load more</div>
+        <a href="{% url 'shop:shop'%}?category=P" class="btn black-text bg-gray-200 border-gray-300 hover:shadow-inner transform hover:scale-105 hover:opacity-50 transition ease-out duration-300">Load more</a>
     </div>
 
 
@@ -88,14 +88,14 @@
         <ul class="flex flex-wrap  gap-5 lg:gap-6">
             {% for category in categories %}
             <li>
-                <a class="btn btn-color text-xs hover-effect" href="{% url 'shop'%}?category={{category}}">{{category}}</a>
+                <a class="btn btn-color text-xs hover-effect" href="{% url 'shop:shop'%}?category={{category}}">{{category}}</a>
             </li>
             {% endfor %}
         </ul>
     </div>
 
     <div class="flex justify-center py-10">
-        <div class="btn black-text bg-gray-200 border-gray-300 hover:shadow-inner transform hover:scale-105 hover:opacity-50 transition ease-out duration-300">Load more</div>
+        <a href="{% url 'shop:shop'%}?category=W" class="btn black-text bg-gray-200 border-gray-300 hover:shadow-inner transform hover:scale-105 hover:opacity-50 transition ease-out duration-300">Load more</a>
     </div>
 
 </main>

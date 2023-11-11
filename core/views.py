@@ -13,8 +13,8 @@ def index(request):
     request.session['sample'].insert(0,'zero data')
     print(vars(request.session))
 
-    plastics = PlasticWaste.objects.all()
-    products= Products.objects.all()
+    plastics = PlasticWaste.objects.all()[:4]
+    products= Products.objects.all()[:4]
     categories = Category.objects.values_list('short_name',flat=True)[:4]
     product_categories = ProductCategory.objects.all()
 
