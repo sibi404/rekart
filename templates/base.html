@@ -30,26 +30,30 @@
                         <li>
                             <a href="#" class="hover:font-bold upp">Dashboard</a>
                         </li>
+                        <li>
+                            <a href="{% url 'cart_index' %}" class="hover:font-bold upp">Cart</a>
+                        </li>
                     </ul>
                 </div>
                 
                 <ul class="hidden md:flex gap-2">
-                    
-                    
+
                     {% if user.is_authenticated %}
-                    <li>
-                        <a href="{% url 'shop:add_item' %}" class="btn text-xs btn-color hover-effect">Add item</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'logout' %}" class="btn text-xs btn-color hover-effect">Logout</a>
-                    </li>
+                        {% if user.customer.is_seller %}
+                            <li>
+                                <a href="{% url 'shop:add_item' %}" class="btn text-xs btn-color hover-effect">Add item</a>
+                            </li>
+                        {% endif %}
+                        <li>
+                            <a href="{% url 'logout' %}" class="btn text-xs btn-color hover-effect">Logout</a>
+                        </li>
                     {% else %}
-                    <li>
-                        <a href="#" class="btn text-xs btn-color hover-effect">Sign up</a>
-                    </li>
-                    <li>
-                        <a href="{% url 'login' %}" class="btn text-xs btn-color hover-effect">Login</a>
-                    </li>
+                        <li>
+                            <a href="{% url 'signup' %}" class="btn text-xs btn-color hover-effect">Sign up</a>
+                        </li>
+                        <li>
+                            <a href="{% url 'login' %}" class="btn text-xs btn-color hover-effect">Login</a>
+                        </li>
                     {% endif %}
                 </ul>
 
@@ -62,12 +66,21 @@
             </nav>
 
             <ul class="border-t-2 border-gray-300 text-lg text-center font-semibold black-text hidden md:hidden" id="phone-menu">
+                {% if user.is_authenticated %}
                 <li class="py-4">
-                    <a href="#" class="hover:font-bold">Login</a>
+                    <a href="{% url 'logout' %}" class="hover:font-bold">Logout</a>
                 </li>
                 <li class="py-4">
-                    <a href="#" class="hover:font-bold">Sign up</a>
+                    <a href="{% url 'shop:add_item' %}" class="hover:font-bold">Add item</a>
                 </li>
+                {% else %}
+                <li class="py-4">
+                    <a href="{% url 'login' %}" class="hover:font-bold">Login</a>
+                </li>
+                <li class="py-4">
+                    <a href="{% url 'signup' %}" class="hover:font-bold">Sign up</a>
+                </li>
+                {% endif %}
                 <li class="py-4">
                     <a href="/" class="hover:font-bold">Home</a>
                 </li>
@@ -76,6 +89,9 @@
                 </li>
                 <li class="py-4">
                     <a href="#" class="hover:font-bold upp">Dashboard</a>
+                </li>
+                <li class="py-4">
+                    <a href="{% url 'cart_index' %}" class="hover:font-bold upp">Cart</a>
                 </li>
             </ul>
         </header>

@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'core',
     'shop',
     'accounts',
+    'cart',
     'tailwind',
     'theme',
     'django_browser_reload'
