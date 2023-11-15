@@ -5,21 +5,29 @@ from django.contrib.auth.models import User
 from django.contrib.auth.models import auth
 from django.contrib.auth import logout
 from . forms import SignupForm
+from . forms import LoginForm
 from . models import Customer
 
 
 def login(request):
     if request.method == 'POST':
-        username = request.POST['username']
-        password = request.POST['password']
+        # username = request.POST['username']
+        # password = request.POST['password']
 
-        user = authenticate(username = username,password = password)
+        # user = authenticate(username = username,password = password)
 
-        if user is not None:
-            auth.login(request,user)
+        # if user is not None:
+        #     auth.login(request,user)
+        #     return redirect('/')
+        form = LoginForm(data = request.POST)
+        if form.is_valid():
             return redirect('/')
+        else:
+            print("Something went wrong\n")
+    else:
+        form = LoginForm()         
 
-    return render(request,'login.html')
+    return render(request,'login.html',{'form':form})
 
 def signup_view(request):
     if request.method == 'POST':
