@@ -8,11 +8,14 @@ class CartList(models.Model):
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.user.username}'s cart"
+        return f"{self.user.user.username}'s cart"
 
 
 class Items(models.Model):
     product = models.ForeignKey(Products,on_delete=models.CASCADE)
-    cart = models.ForeignKey(Cart,on_delete=models.CASCADE,related_name='items')
+    cart = models.ForeignKey(CartList,on_delete=models.CASCADE,related_name='items')
     quantity = models.IntegerField()
     active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.product.name

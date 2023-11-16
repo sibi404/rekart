@@ -45,6 +45,9 @@ def shop(request):
 
 
 
+def product_view(request):
+    return render('detail.html')
+
 def add_item(request):
 
     form = EmployeeForm()

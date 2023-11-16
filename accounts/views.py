@@ -11,14 +11,6 @@ from . models import Customer
 
 def login(request):
     if request.method == 'POST':
-        # username = request.POST['username']
-        # password = request.POST['password']
-
-        # user = authenticate(username = username,password = password)
-
-        # if user is not None:
-        #     auth.login(request,user)
-        #     return redirect('/')
         form = LoginForm(data = request.POST)
         if form.is_valid():
             return redirect('/')
