@@ -20,21 +20,20 @@
                     <div class="mt-4 flex justify-between im sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                         <div class="flex items-center border-gray-100">
                             <span
-                                onclick="ajax_test({{i.product.id}},0)"
+                                onclick="quantityChange({{i.product.id}},0,event)"
                                 class="cursor-pointer rounded-l font-bold bg-gray-100 py-1 px-3.5 duration-100 hover:bg-primary hover:text-blue-50">
                                 - 
                             </span>
                             
-                                <div class="px-3" id="item_quantity">
-                                    {{i.quantity}}
-                                </div>
-                            <a href="#">
+                            <div class="px-3" id="item_quantity">
+                                {{i.quantity}}
+                            </div>
+
                             <span
-                                onclick="ajax_test({{i.product.id}},1)"
+                                onclick="quantityChange({{i.product.id}},1,event)"
                                 class="cursor-pointer rounded-r font-bold bg-gray-100 py-1 px-3 duration-100 hover:bg-primary hover:text-blue-50">
                                 + 
                             </span>
-                            </a>
                         </div>
                         <div class="flex items-center space-x-4">
                             <p class="text-sm">&#8377 {{i.product.price}}</p>
@@ -80,62 +79,5 @@
     </div>
 </div>
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script>
-    const quantity = document.getElementById('item_quantity');
-    const total = document.getElementById('total');
-    const subTotal = document.getElementById('sub-total');
-
-
-    function ajax_test(id,action){
-        if (action == 1){
-            var url = `http://127.0.0.1:8000/cart/addCount/${id}`;
-        }else if (action == 0){
-            var url = `http://127.0.0.1:8000/cart/reduceCount/${id}`;
-        }
-
-        var parent = event.srcElement;
-        
-        fetch(url)
-        .then((resp) => {
-            resp.json()
-            .then(function(data){
-                if (data.quantity == 'error'){
-                    Swal.fire({
-                        icon: "error",
-                        title: "Oops...",
-                        text: "No more stock available!",
-                        confirmButtonColor: '#1F6B48',
-                      });
-                }else if(data.quantity == 'empty'){
-                    /*
-                    console.log("Empty reached\n");
-                    
-                    while(!parent.classList.contains('parent')){
-                        parent = parent.parentNode;
-                    }
-                    parent.remove();
-                    console.log("Parent removed\n");
-                    */
-                    location.reload();
-                }else{
-                    quantity.innerText = data.quantity;
-
-                    const price = parseFloat(data.price);
-                    const subTotalVal = parseFloat(subTotal.innerText);
-                    const totalVal = parseFloat(total.innerHTML);
-
-                    if (action == 1){
-                        subTotal.innerText = (subTotalVal + price).toFixed(2);
-                        total.innerText = (totalVal + price).toFixed(2);
-                    }else{
-                        subTotal.innerText = (subTotalVal - price).toFixed(2);
-                        total.innerText = (totalVal - price).toFixed(2);
-                    }
-                }
-                
-                
-            })
-        })
-    }
-</script>
+<script src="{% static 'script/cart.js' %}"></script>
 {% endblock %}
