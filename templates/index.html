@@ -5,7 +5,7 @@
 <div class="p-16 bg-gradient-to-b from-primary from-43% to-secondary to-100%  text-white flex flex-wrap justify-around items-center">
     <div>
         <h1 class="text-5xl font-bold">Welcome to Rekart</h1>
-        <p class="text-lg">Lorem Ipsum is simply dummy text of the printing and typesetting</p>
+        <p class="text-lg">The place where we convert any type of waste materials into awesome products...</p>
         <a href="#content">Let's explore</a>
     </div>
         
@@ -25,7 +25,7 @@
 
         <!-- card -->
         {% for product in products %}
-        <a href="#">
+        <a href="{% url 'shop:product_details' product.id %}">
             <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> 
                 <img src="{{ product.image.url }}" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
                 <div class="m-4">

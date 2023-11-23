@@ -45,8 +45,14 @@ def shop(request):
 
 
 
-def product_view(request):
-    return render('detail.html')
+def product_view(request,product_id):
+    product = Products.objects.get(id = product_id)
+    print(product.name)
+
+    context = {
+        'product' : product
+    }
+    return render(request,'detail.html',context)
 
 def add_item(request):
 
