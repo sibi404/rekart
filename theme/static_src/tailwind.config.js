@@ -61,6 +61,9 @@ module.exports = {
             },
               animation:{
                 'digonal':'digonal 1.5s ease-in-out infinite'
+            },
+            scale :{
+              'p1' : '.1'
             }
         },
     },

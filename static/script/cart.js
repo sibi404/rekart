@@ -14,7 +14,6 @@ function quantityChange(id,action,event){
     }
 
     var parent = event.srcElement;
-    console.log(parent);
     
     fetch(url)
     .then((resp) => {

@@ -27,3 +27,33 @@
 .btn{
     @apply font-bold text-xs border-2 py-2 px-4 rounded-full uppercase cursor-pointer tracking-wider;
 }
+
+.popup{
+    @apply
+    w-96
+    absolute
+    top-0
+    left-1/2
+    transform
+    -translate-x-1/2
+    -translate-y-1/2
+    scale-p1
+    bg-gray-100
+    pb-7
+    pt-3
+    rounded-md
+    invisible
+    transition-all
+    duration-300
+    z-10;
+}
+
+.open-popup{
+    @apply
+    visible
+    transform
+    -translate-x-1/2
+    -translate-y-1/2
+    scale-100
+    top-1/2;
+}

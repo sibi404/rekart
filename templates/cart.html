@@ -10,12 +10,12 @@
             <div class="justify-between mb-6 rounded-lg bg-white p-6 shadow-md sm:flex sm:justify-start parent">
                 <img src="{{i.product.image.url}}"
                     alt="product-image" class="w-full rounded-lg sm:w-40" />
-                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between">
+                <div class="sm:ml-4 sm:flex sm:w-full sm:justify-between items-center">
                     <div class="mt-5 sm:mt-0">
-                        <a href="#">
+                        <a href="{% url 'shop:product_details' i.product.id %}">
                             <h2 class="text-lg font-bold text-gray-900">{{i.product.name}}</h2>
                         </a>
-                        <p class="mt-1 text-xs text-gray-700">36EU - 4US</p>
+                        <!-- <p class="mt-1 text-xs text-gray-700">36EU - 4US</p> -->
                     </div>
                     <div class="mt-4 flex justify-between im sm:space-y-6 sm:mt-0 sm:block sm:space-x-6">
                         <div class="flex items-center border-gray-100">

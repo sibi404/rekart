@@ -41,7 +41,7 @@
                     {% if user.is_authenticated %}
                         {% if user.customer.is_seller %}
                             <li>
-                                <a href="{% url 'shop:add_item' %}" class="btn text-xs btn-color hover-effect">Add item</a>
+                                <a href="#" onclick="openPopup()" class="btn text-xs btn-color hover-effect">Add item</a>
                             </li>
                         {% endif %}
                         <li>
@@ -71,7 +71,7 @@
                     <a href="{% url 'logout' %}" class="hover:font-bold">Logout</a>
                 </li>
                 <li class="py-4">
-                    <a href="{% url 'shop:add_item' %}" class="hover:font-bold">Add item</a>
+                    <a href="#" onclick="openPopup()" class="hover:font-bold">Add item</a>
                 </li>
                 {% else %}
                 <li class="py-4">
@@ -95,6 +95,18 @@
                 </li>
             </ul>
         </header>
+        <div id="popup" class="popup">
+            <div class="flex justify-end mr-2">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6 font-extrabold cursor-pointer hover:text-red-700" onclick="closePopup()">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>     
+            </div>
+            <p class="text-center mb-6">What would you like to add..?</p>
+            <div class="flex justify-center flex-wrap align-middle gap-8">
+                <a href="{% url 'shop:add_item' %}" class="px-4 py-2 bg-primary text-white rounded-md font-bold hover:bg-secondary">Recycled product</a>
+                <a href="{% url 'shop:add_item' %}" class="px-4 py-2 bg-primary text-white rounded-md font-bold hover:bg-secondary">Plastic waste</a>
+            </div>
+        </div>
         {% block content %}
 
         {% endblock %}
@@ -102,6 +114,7 @@
     <footer class="h-32 bg-gray-900">
             
     </footer>
+    <script src="{% static 'script/popup.js' %}" ></script>
     <script src="{% static 'script/script.js' %}"></script>
 </body>
 </html>

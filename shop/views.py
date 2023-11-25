@@ -1,13 +1,16 @@
 from django.shortcuts import render
+from django.shortcuts import redirect
 from itertools import chain
+from django.contrib.auth.models import User
 
 from core.models import Category
 from core.models import ProductCategory
 from core.models import Products
 from core.models import PlasticWaste
 
+from . forms import ProductsForm
 
-from . forms import EmployeeForm
+
 
 def shop(request):
     plastic_category = Category.objects.values_list('short_name',flat=True)
@@ -56,6 +59,18 @@ def product_view(request,product_id):
 
 def add_item(request):
 
-    form = EmployeeForm()
+    if request.method == 'POST':
+        form = ProductsForm(request.POST,request.FILES)
+        if form.is_valid():
+            user = User.objects.get(username=request.user)
+            obj =  form.save(commit=False)
+            obj.seller = user
+            obj.save()
+            
+            return redirect('/')
+    else:
+        form = ProductsForm()
 
-    return render(request,'new.html',{"form":form})
+    context = {'form':form}
+
+    return render(request,'new.html',context)
