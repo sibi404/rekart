@@ -1,4 +1,4 @@
-// const quantity = document.getElementById('item_quantity');
+const domain = 'http://127.0.0.1:8000';
 
 const total = document.getElementById('total');
 const subTotal = document.getElementById('sub-total');
@@ -6,10 +6,10 @@ const subTotal = document.getElementById('sub-total');
 
 function quantityChange(id,action,event){
     if (action == 1){
-        var url = `http://127.0.0.1:8000/cart/addCount/${id}`;
+        var url = `${domain}/cart/addCount/${id}`;
         var quantity = event.srcElement.previousElementSibling;
     }else if (action == 0){
-        var url = `http://127.0.0.1:8000/cart/reduceCount/${id}`;
+        var url = `${domain}/cart/reduceCount/${id}`;
         var quantity = event.srcElement.nextElementSibling;
     }
 

@@ -103,8 +103,8 @@
             </div>
             <p class="text-center mb-6">What would you like to add..?</p>
             <div class="flex justify-center flex-wrap align-middle gap-8">
-                <a href="{% url 'shop:add_item' %}" class="px-4 py-2 bg-primary text-white rounded-md font-bold hover:bg-secondary">Recycled product</a>
-                <a href="{% url 'shop:add_item' %}" class="px-4 py-2 bg-primary text-white rounded-md font-bold hover:bg-secondary">Plastic waste</a>
+                <a href="{% url 'shop:add_item' %}?type=product" class="px-4 py-2 bg-primary text-white rounded-md font-bold hover:bg-secondary">Recycled product</a>
+                <a href="{% url 'shop:add_item' %}?type=plastic" class="px-4 py-2 bg-primary text-white rounded-md font-bold hover:bg-secondary">Plastic waste</a>
             </div>
         </div>
         {% block content %}
@@ -116,5 +116,6 @@
     </footer>
     <script src="{% static 'script/popup.js' %}" ></script>
     <script src="{% static 'script/script.js' %}"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 </body>
 </html>

@@ -9,6 +9,7 @@ from core.models import Products
 from core.models import PlasticWaste
 
 from . forms import ProductsForm
+from . forms import PlasticWasteForm
 
 
 
@@ -58,19 +59,42 @@ def product_view(request,product_id):
     return render(request,'detail.html',context)
 
 def add_item(request):
+    type = request.GET.get('type',None)
 
     if request.method == 'POST':
-        form = ProductsForm(request.POST,request.FILES)
+        if type == 'product':
+            form = ProductsForm(request.POST,request.FILES)
+        else:
+            form = PlasticWasteForm(request.POST,request.FILES)
         if form.is_valid():
             user = User.objects.get(username=request.user)
             obj =  form.save(commit=False)
             obj.seller = user
-            obj.save()
-            
-            return redirect('/')
+            obj.save() 
+        return redirect('/')
     else:
-        form = ProductsForm()
+        if type == 'product':
+            form = ProductsForm()
+        else:
+            form = PlasticWasteForm()
 
-    context = {'form':form}
+    context = {'form':form,'type' : type}
 
     return render(request,'new.html',context)
+
+def update_product(request,product_id):
+    product = Products.objects.get(id = product_id)
+    if request.method == 'POST':
+        form = ProductsForm(request.POST,request.FILES,instance=product)
+        if form.is_valid:
+            form.save()
+            return redirect('shop:product_details',product_id = product.id)
+    else:
+        form = ProductsForm(instance=product)
+    return render(request,'new.html',{'form':form})
+
+
+def delete_product(request,product_id):
+    product = Products.objects.get(id = product_id)
+    product.delete()
+    return redirect('shop:shop')
