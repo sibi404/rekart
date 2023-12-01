@@ -25,7 +25,7 @@
 
         <!-- card -->
         {% for product in products %}
-        <a href="{% url 'shop:product_details' product.id %}">
+        <a href="{% url 'shop:product_details' product.slug %}">
             <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> 
                 <img src="{{ product.image.url }}" class="w-full h-52  sm:h-64 object-cover" alt="pvc powder">
                 <div class="m-4">
@@ -64,12 +64,12 @@
 
     <div class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-10"> <!-- card wrapper 2 -->
         {% for plastic in plastics %}
-        <a href="#">
+        <a href="{% url 'shop:plastic_details' plastic.slug %}">
             <div class="bg-white rounded-md overflow-hidden shadow-md hover:shadow-lg"> <!-- card -->
                 <img src="{{plastic.image.url}}" class="w-full h-52  sm:h-64 object-cover" alt="{{plastic.name}}">
                 <div class="m-4">
                     <span class="font-bold text-lg black-text">{{plastic.name}}</span>
-                    <span class="block text-secondary font-bold">&#8377 {{plastic.price}} /kg</span>
+                    <span class="block text-secondary font-bold">&#8377 {{plastic.price}} /{{plastic.unit}}</span>
                 </div>
                 <div class="mx-4 mb-4">
                     <p class="text-xs font-semibold">Stock : {{plastic.quantity}} {{plastic.unit}}</p>

@@ -4,7 +4,14 @@ from . models import Products
 from . models import ProductCategory
 
 
-admin.site.register(PlasticWaste)
+class ProductAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug":("name",)}
+
+class PlasticWasteAdmin(admin.ModelAdmin):
+    prepopulated_fields = {"slug":("name",)}
+
+
+admin.site.register(PlasticWaste,PlasticWasteAdmin)
 admin.site.register(Category)
-admin.site.register(Products)
+admin.site.register(Products,ProductAdmin)
 admin.site.register(ProductCategory)

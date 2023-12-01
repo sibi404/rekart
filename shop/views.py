@@ -49,14 +49,22 @@ def shop(request):
 
 
 
-def product_view(request,product_id):
-    product = Products.objects.get(id = product_id)
-    print(product.name)
+def product_view(request,slug):
+    product = Products.objects.get(slug = slug)
 
     context = {
-        'product' : product
+        'product' : product,
+        'item' : 'product'
     }
-    return render(request,'detail.html',context)
+    return render(request,'product_detail.html',context)
+
+def plastic_view(request,slug):
+    plastic = PlasticWaste.objects.get(slug = slug)
+    context = {
+        'plastic' : plastic,
+        'item' : 'plastic'
+    }
+    return render(request,'plastic_details.html',context)
 
 def add_item(request):
     type = request.GET.get('type',None)
@@ -88,13 +96,30 @@ def update_product(request,product_id):
         form = ProductsForm(request.POST,request.FILES,instance=product)
         if form.is_valid:
             form.save()
-            return redirect('shop:product_details',product_id = product.id)
+            return redirect('shop:product_details',slug = product.slug)
     else:
         form = ProductsForm(instance=product)
-    return render(request,'new.html',{'form':form})
+    return render(request,'new.html',{'form':form,'type' : 'product','update':True})
+
+
+def update_plastic(request,plastic_id):
+    plastic = PlasticWaste.objects.get(id = plastic_id)
+    if request.method == 'POST':
+        form = PlasticWasteForm(request.POST,request.FILES,instance=plastic)
+        if form.is_valid:
+            form.save()
+            return redirect('shop:plastic_details',slug = plastic.slug)
+    else:
+        form = PlasticWasteForm(instance=plastic)
+    return render(request,'new.html',{'form':form,'type' : 'plastic','update' : True})
 
 
 def delete_product(request,product_id):
     product = Products.objects.get(id = product_id)
     product.delete()
+    return redirect('shop:shop')
+
+def delete_plastic(request,plastic_id):
+    plastic = PlasticWaste.objects.get(id = plastic_id)
+    plastic.delete()
     return redirect('shop:shop')

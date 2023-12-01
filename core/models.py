@@ -32,6 +32,7 @@ class PlasticWaste(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     image = models.ImageField(upload_to='plastic_image',blank=True,null=True)
     seller = models.ForeignKey(User,related_name='plastic_waste',on_delete=models.CASCADE,null=True,blank=True)
+    slug = models.SlugField(default="",null=True)
 
     def __str__(self):
           return self.name
@@ -51,6 +52,7 @@ class Products(models.Model):
       image = models.ImageField(upload_to='product_image',blank=True,null=True)
       seller = models.ForeignKey(User,related_name='products',on_delete=models.CASCADE,null=True,blank=True)
       category = models.ForeignKey(ProductCategory,on_delete=models.CASCADE,null=True)
+      slug = models.SlugField(default="",null=True)
 
       def __str__(self):
             return self.name
