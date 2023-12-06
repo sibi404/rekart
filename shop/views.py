@@ -2,6 +2,7 @@ from django.shortcuts import render
 from django.shortcuts import redirect
 from itertools import chain
 from django.contrib.auth.models import User
+from django.utils.text import slugify
 
 from core.models import Category
 from core.models import ProductCategory
@@ -78,6 +79,7 @@ def add_item(request):
             user = User.objects.get(username=request.user)
             obj =  form.save(commit=False)
             obj.seller = user
+            obj.slug = slugify(obj.name)
             obj.save() 
         return redirect('/')
     else:
@@ -95,7 +97,9 @@ def update_product(request,product_id):
     if request.method == 'POST':
         form = ProductsForm(request.POST,request.FILES,instance=product)
         if form.is_valid:
-            form.save()
+            obj = form.save(commit=False)
+            obj.slug = slugify(obj.name)
+            obj.save()
             return redirect('shop:product_details',slug = product.slug)
     else:
         form = ProductsForm(instance=product)

@@ -49,7 +49,6 @@ class ProductsForm(ModelForm):
     }))
 
 
-
 class PlasticWasteForm(ModelForm):
     class Meta:
         model = PlasticWaste

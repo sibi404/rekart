@@ -19,7 +19,7 @@
         <div class="flex">
           <span class="title-font font-medium text-2xl text-gray-900">&#8377 {{plastic.price}} /{{plastic.unit}}</span>
           {% if plastic.seller != user %}
-          <a href="#" class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-secondary rounded">
+          <a href="{% url 'chat:new' plastic.id %}" class="flex ml-auto text-white bg-primary border-0 py-2 px-6 focus:outline-none hover:bg-secondary rounded">
               Contact seller
           </a>
           {% else %}
